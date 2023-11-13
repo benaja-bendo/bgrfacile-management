@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import path from 'node:path'
+import { fileURLToPath, URL } from 'node:url'
 import electron from 'vite-plugin-electron/simple'
 import react from '@vitejs/plugin-react'
 
@@ -22,4 +23,10 @@ export default defineConfig({
       renderer: {},
     }),
   ],
+  base: './',
+  resolve: {
+    alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+    }
+  }
 })
