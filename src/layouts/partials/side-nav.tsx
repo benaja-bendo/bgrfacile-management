@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link,useLocation} from "react-router-dom";
 import {
     Box,
     Divider,
@@ -11,10 +11,11 @@ import {
 } from '@mui/material';
 import {Logo} from '@/components/svg/logo';
 import {Scrollbar} from '@/layouts/partials/scrollbar';
-import {items, NavItem} from '@/layouts/partials/config';
+import {items} from '@/layouts/partials/config';
 import {SideNavItem} from '@/layouts/partials/side-nav-item';
+import {NavItem} from "@/types/NavItem";
 
-interface SideNavProps {
+type SideNavProps = {
     onClose?: () => void;
     open?: boolean;
     auth?: {
@@ -25,8 +26,9 @@ interface SideNavProps {
         };
     };
 }
-
+const TITLE_APP = 'bgrfacile-management';
 export const SideNav: React.FC<SideNavProps> = ({onClose, open}) => {
+    const location = useLocation();
     const lgUp = useMediaQuery<Theme>((theme: Theme) => theme.breakpoints.up('lg'));
 
     const content = (
@@ -61,32 +63,8 @@ export const SideNav: React.FC<SideNavProps> = ({onClose, open}) => {
 
                     </Box>
                     <Typography variant={lgUp ? 'h5' : 'h6'}>
-                        HabitAfrica
+                        {TITLE_APP}
                     </Typography>
-                    {/*<Box
-                        sx={{
-                            alignItems: 'center',
-                            backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                            borderRadius: 1,
-                            cursor: 'pointer',
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            mt: 2,
-                            p: '12px'
-                        }}
-                    >
-                        <div>
-                            <Typography color="inherit" variant="subtitle1">
-                                 {auth?.user?.data?.fullName}
-                            </Typography>
-                            <Typography color="neutral.400" variant="body2">
-                                role
-                            </Typography>
-                        </div>
-                        <SvgIcon fontSize="small" sx={{color: 'neutral.500'}}>
-                            <ChevronUpDownIcon/>
-                        </SvgIcon>
-                    </Box>*/}
                 </Box>
                 <Divider sx={{borderColor: 'neutral.700'}}/>
                 <Box
@@ -107,11 +85,9 @@ export const SideNav: React.FC<SideNavProps> = ({onClose, open}) => {
                         }}
                     >
                         {items.map((item: NavItem) => {
-                            // const active = route(route().current()) === item.path;
-                            const active = false;
                             return (
                                 <SideNavItem
-                                    active={active}
+                                    active={location.pathname === item.path}
                                     disabled={item.disabled}
                                     external={item.external}
                                     icon={item.icon}

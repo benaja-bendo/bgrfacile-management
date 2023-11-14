@@ -16,11 +16,12 @@ import {
 import {alpha} from '@mui/material/styles';
 import {usePopover} from '@/hooks/use-popover';
 import {AccountPopover} from '@/layouts/partials/account-popover';
+import {UsersIcon} from "@heroicons/react/24/solid";
 
 const SIDE_NAV_WIDTH = 280;
 const TOP_NAV_HEIGHT = 64;
 
-interface TopNavProps {
+type TopNavProps = {
     onNavOpen?: () => void;
 }
 
@@ -81,13 +82,13 @@ export const TopNav: React.FC<TopNavProps> = ({onNavOpen}) => {
                         direction="row"
                         spacing={2}
                     >
-                        {/*<Tooltip title="Contacts">
+                        <Tooltip title="utilisateurs en ligne">
                             <IconButton>
                                 <SvgIcon fontSize="small">
                                     <UsersIcon/>
                                 </SvgIcon>
                             </IconButton>
-                        </Tooltip>*/}
+                        </Tooltip>
                         <Tooltip title="Notifications">
                             <IconButton>
                                 <Badge
@@ -109,7 +110,7 @@ export const TopNav: React.FC<TopNavProps> = ({onNavOpen}) => {
                                 height: 40,
                                 width: 40
                             }}
-                            src="/assets/avatars/avatar-anika-visser.png"
+                            src="https://www.gravatar.com/avatar/78e731027d8fd50ed642340b7c9a63b3"
                         />
                     </Stack>
                 </Stack>

@@ -1,28 +1,20 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import {Box, ButtonBase} from '@mui/material';
+import {NavItem} from "@/types/NavItem.ts";
 
-export interface SideNavItemProps {
-    active?: boolean;
-    disabled?: boolean;
-    external?: boolean;
-    icon?: React.ReactNode;
-    path?: string;
-    title: string;
-}
 
-export const SideNavItem: React.FC<SideNavItemProps> = (
-    {
-        active = false,
-        disabled,
-        icon,
-        path,
+export const SideNavItem: React.FC<NavItem> = (props) => {
+    const {
         title,
-    }
-) => {
+        path,
+        icon,
+        active,
+        disabled,
+        external,
+    } = props;
 
-/*    const linkProps = path
-        ? external
+    const linkProps = external
             ? {
                 component: 'a',
                 href: path,
@@ -30,14 +22,9 @@ export const SideNavItem: React.FC<SideNavItemProps> = (
             }
             : {
                 component: Link,
-                href: path,
-            }
-        : {};*/
+                to: path,
+            };
 
-    const linkProps = {
-        component: Link,
-        to: path,
-    }
     return (
         <li>
             <ButtonBase

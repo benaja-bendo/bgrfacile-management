@@ -1,16 +1,21 @@
-import React from "react";
 import {SvgIcon} from "@mui/material";
 import {UsersIcon} from "@heroicons/react/24/solid";
-
-export interface NavItem {
-    title: string;
-    path: string;
-    icon: React.ReactElement;
-    disabled?: boolean;
-    external?: boolean;
-}
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import {NavItem} from "@/types/NavItem";
 
 export const items: NavItem[] = [
+    {
+        title: 'Dashboard',
+        path: '/',
+        icon: (
+            <SvgIcon fontSize="small">
+                <DashboardIcon />
+            </SvgIcon>
+        ),
+        active: true,
+        disabled: false,
+        external: false,
+    },
     {
         title: 'Customers',
         path: '/customers',
@@ -18,25 +23,9 @@ export const items: NavItem[] = [
             <SvgIcon fontSize="small">
                 <UsersIcon />
             </SvgIcon>
-        )
+        ),
+        active: false,
+        disabled: false,
+        external: false,
     },
-    /*    {
-            title: 'Gestion des utilisateurs',
-            path: 'users.index',
-            icon: (
-                <SvgIcon fontSize="small">
-                    <UsersIcon/>
-                </SvgIcon>
-            ),
-        },*/
-    /*    {
-            title: 'Statistiques et graphiques',
-            path: 'statistics.index',
-            icon: (
-                <SvgIcon fontSize="small">
-                    <ShoppingBagIcon/>
-                </SvgIcon>
-            ),
-        },*/
-
 ];
