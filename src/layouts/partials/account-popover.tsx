@@ -21,7 +21,6 @@ export const AccountPopover: React.FC<AccountPopoverProps> = ({anchorEl, onClose
             }}
             onClose={onClose}
             open={open}
-            PaperProps={{sx: {width: 200}}}
         >
             <Box sx={{py: 1.5, px: 2}}>
                 <Typography variant="overline">Account</Typography>
