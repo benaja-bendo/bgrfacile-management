@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 
-export const useSelection = (items = []) => {
-    const [selected, setSelected] = useState([]);
+type ItemType = any; // Remplacez 'any' par le type réel de vos éléments
+
+export const useSelection = (items: ItemType[] = []) => {
+    const [selected, setSelected] = useState<ItemType[]>([]);
 
     useEffect(() => {
         setSelected([]);
@@ -11,7 +13,7 @@ export const useSelection = (items = []) => {
         setSelected([...items]);
     }, [items]);
 
-    const handleSelectOne = useCallback((item) => {
+    const handleSelectOne = useCallback((item: ItemType) => {
         setSelected((prevState) => [...prevState, item]);
     }, []);
 
@@ -19,7 +21,7 @@ export const useSelection = (items = []) => {
         setSelected([]);
     }, []);
 
-    const handleDeselectOne = useCallback((item) => {
+    const handleDeselectOne = useCallback((item: ItemType) => {
         setSelected((prevState) => {
             return prevState.filter((_item) => _item !== item);
         });
