@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-type ItemType = any; // Remplacez 'any' par le type réel de vos éléments
+type ItemType = string;
 
 export const useSelection = (items: ItemType[] = []) => {
     const [selected, setSelected] = useState<ItemType[]>([]);

@@ -9,6 +9,8 @@ import {
     IconButton,
     Stack,
     SvgIcon,
+    InputAdornment,
+    OutlinedInput,
     Tooltip,
     useMediaQuery,
     Theme,
@@ -44,7 +46,8 @@ export const TopNav: React.FC<TopNavProps> = ({onNavOpen}) => {
                     width: {
                         lg: `calc(100% - ${SIDE_NAV_WIDTH}px)`
                     },
-                    zIndex: (theme) => theme.zIndex.appBar
+                    zIndex: (theme) => theme.zIndex.appBar,
+                    borderBottom: (theme) => `1px solid ${theme.palette.divider}`
                 }}
             >
                 <Stack
@@ -69,13 +72,22 @@ export const TopNav: React.FC<TopNavProps> = ({onNavOpen}) => {
                                 </SvgIcon>
                             </IconButton>
                         )}
-                        <Tooltip title="Search">
-                            <IconButton>
-                                <SvgIcon fontSize="small">
-                                    <MagnifyingGlassIcon/>
-                                </SvgIcon>
-                            </IconButton>
-                        </Tooltip>
+                        <OutlinedInput
+                            defaultValue=""
+                            fullWidth
+                            placeholder="Search for a page"
+                            startAdornment={(
+                                <InputAdornment position="start">
+                                    <SvgIcon
+                                        color="action"
+                                        fontSize="small"
+                                    >
+                                        <MagnifyingGlassIcon />
+                                    </SvgIcon>
+                                </InputAdornment>
+                            )}
+                            sx={{ maxWidth: 500,height: '40px', padding: '10px'}}
+                        />
                     </Stack>
                     <Stack
                         alignItems="center"
